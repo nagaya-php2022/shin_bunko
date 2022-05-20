@@ -14,7 +14,8 @@ class RentalController extends Controller
      */
     public function index()
     {
-        //
+        $rentals = Rental::orderby('created_at', 'desc')->paginate(20);
+        return view('rentals.index', ['rentals' => $rentals]);
     }
 
     /**

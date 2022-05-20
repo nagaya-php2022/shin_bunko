@@ -14,7 +14,8 @@ class MemberController extends Controller
      */
     public function index()
     {
-        //
+        $members = Member::orderby('created_at', 'desc')->paginate(20);
+        return view('members.index', ['members' => $members]);
     }
 
     /**
