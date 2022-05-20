@@ -14,10 +14,10 @@ class CreateBookDetailsTable extends Migration
     public function up()
     {
         Schema::create('book_details', function (Blueprint $table) {
-            $table->integer('isbn')->length(13)->unsigned()->index();
+            $table->bigInteger('isbn')->unsigned()->index();
             $table->string('name', 300); //100文字
             //$table->foreignId('group_code')->constrained('groups');
-            $table->integer('group_code')->length(1)->unsigned()->index();
+            $table->integer('group_code')->unsigned()->index();
             $table->string('author', 300); //100文字
             $table->string('publisher', 300); //100文字
             $table->date('published_at');

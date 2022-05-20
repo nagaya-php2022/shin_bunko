@@ -14,7 +14,7 @@ class CreateGroupsTable extends Migration
     public function up()
     {
         Schema::create('groups', function (Blueprint $table) {
-            $table->integer('code')->length(1)->unsigned()->index();
+            $table->integer('code')->unsigned()->index();
             $table->string('name', 12); //4文字
         });
     }
