@@ -14,7 +14,8 @@ class StaffController extends Controller
      */
     public function index()
     {
-        //
+        $staff = Staff::orderby('created_at', 'desc')->paginate(20);
+        return view('staff.index', ['staff' => $staff]);
     }
 
     /**
