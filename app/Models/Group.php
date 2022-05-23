@@ -10,4 +10,9 @@ class Group extends Model
     use HasFactory;
 
     protected $primaryKey = 'code';
+
+    public function book_details()
+    {
+        return $this->hasMany(BookDetail::class);
+    }
 }

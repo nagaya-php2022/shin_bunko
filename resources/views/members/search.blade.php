@@ -3,7 +3,7 @@
 @section('content')
 <h1>会員検索</h1>
 <!--検索フォーム-->
-    <form action="" method="get"><!--データの送信先の入力-->
+    <form action="{{ route('members.search') }}" method="get"><!--データの送信先の入力-->
         @csrf
         <input type="number" name="member_id" id="member_id" placeholder="会員ID">
         <button type="submit"><i class="fas fa-search"></i></button>
@@ -29,6 +29,4 @@
     </tbody>
 </table>
 
-<!--ページ切り替え-->
-{{ $members->links() }}
 @endsection
