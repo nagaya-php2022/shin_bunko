@@ -1,6 +1,6 @@
 <dl>
     <dt>職員ID</dt>
-    <dd>{{ $member->id }}</dd>
+    <dd>{{ $staff->id }}</dd>
     <dt>氏名</dt>
-    <dd>{{ $member->name }}</dd>
+    <dd>{{ $staff->name }}</dd>
 </dl>

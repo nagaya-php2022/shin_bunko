@@ -30,7 +30,7 @@
             @foreach ($members as $member) <!--membersテーブルのデータを引っ張ってくる-->
                 <tr>
                     <td>{{ $member->id }}</td>
-                    <td>{{ $member->name }}</td>
+                    <td><a href="{{ route('members.show', $member->id) }}">{{ $member->name }}</a></td>
                     <td>{{ $member->tel }}</td>
                 </tr>
             @endforeach

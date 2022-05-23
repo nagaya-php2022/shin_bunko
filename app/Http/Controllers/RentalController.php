@@ -15,6 +15,9 @@ class RentalController extends Controller
     public function index()
     {
         $rentals = Rental::orderby('created_at', 'desc')->paginate(20);
+        /*$rentals = Rental::with(['book' => function($query){
+            $query->with('book_detail');
+        }])->orderby('created_at', 'desc')->paginate(20);*/
         return view('rentals.index', ['rentals' => $rentals]);
     }
 
@@ -47,7 +50,10 @@ class RentalController extends Controller
      */
     public function show(Rental $rental)
     {
-        //
+        $book = $rental->book;
+        $member = $rental->member;
+        $staff = $rental->staff;
+        return view('rentals.show', ['rental' => $rental, 'book' => $book, 'member' => $member, 'staff' => $staff]);
     }
 
     /**
@@ -82,5 +88,15 @@ class RentalController extends Controller
     public function destroy(Rental $rental)
     {
         //
+    }
+
+    public function search(Request $request)
+    {
+        $query = Rental::select('id', 'book_id', 'member_id', 'created_at', 'returned_at');
+        if ($request->book_id) {
+            $query->where('book_id', '=', $request->book_id);
+        }
+        $rentals = $query->get();
+        return view('rentals.search', ['rentals' => $rentals]);
     }
 }

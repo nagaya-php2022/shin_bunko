@@ -20,7 +20,7 @@
             @foreach ($books as $book) <!--booksテーブルのデータを引っ張ってくる-->
                 <tr>
                     <td>{{ $book->id }}</td>
-                    <td>{{ $book->book_detail->name }}</td>
+                    <td><a href="{{ route('books.show', $book->id) }}">{{ $book->book_detail->name }}</a></td>
                     <td>{{ $book->book_detail->author }}</td>
                     <td>{{ $book->book_detail->publisher }}</td>
                 </tr>

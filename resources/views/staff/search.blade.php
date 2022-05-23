@@ -4,7 +4,6 @@
 <h1>職員検索</h1>
 <!--検索フォーム-->
     <form action="{{ route('staff.search') }}" method="get"><!--データの送信先の入力-->
-        @csrf
         <input type="number" name="staff_id" id="staff_id" placeholder="職員ID">
         <button type="submit"><i class="fas fa-search"></i></button>
     </form>

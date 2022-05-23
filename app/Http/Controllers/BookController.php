@@ -47,7 +47,7 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        //
+        return view('books.show', ['book' => $book]);
     }
 
     /**
@@ -86,11 +86,11 @@ class BookController extends Controller
 
     public function search(Request $request)
     {
-        $query = Book::select('id', 'name', 'author', 'publisher');
+        $query = Book::select('id', 'isbn');
         if ($request->book_id) {
             $query->where('id', '=', $request->book_id);
         }
-        $books = $query->get();
-        return view('members.search', ['books' => $books]);
+        $books = $query->orderBy('id')->get();
+        return view('books.search', ['books' => $books]);
     }
 }
