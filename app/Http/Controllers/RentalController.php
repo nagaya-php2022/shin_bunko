@@ -25,7 +25,7 @@ class RentalController extends Controller
      */
     public function create()
     {
-        //
+        return view("rentals.rental");
     }
 
     /**

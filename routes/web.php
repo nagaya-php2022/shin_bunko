@@ -32,6 +32,9 @@ Route::get('/', function () {
 })->name('members.search');*/
 Route::get('members/search', [MemberController::class, 'search'])->name('members.search');
 Route::get('staff/search', [StaffController::class, 'search'])->name('staff.search');
+
+Route::get('book-data/{id}', [BookController::class, "bookData"]);
+
 Route::get('books/search', [BookController::class, 'search'])->name('books.search');
 Route::get('rentals/search', [RentalController::class, 'search'])->name('rentals.search');
 
