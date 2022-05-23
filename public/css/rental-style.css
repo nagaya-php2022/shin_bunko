@@ -1,0 +1,87 @@
+.rental-rental_staffIdCard {
+    background: white;
+    border-radius: .5em;
+    padding: 1em;
+    width: 20em;
+}
+
+.rental-rental_bookListContainer {
+    background: white;
+    border-radius: .5em;
+    padding: 2em;
+    width: 100%;
+    margin-top: 1em;
+}
+
+/* rental book data begin */
+.rental-rental_bookData {
+    position: relative;
+    background: #FFE2BF;
+    border-radius: .3em;
+    border-left: .5em solid #F9781A;
+    margin-bottom: 1em;
+    padding: 1em;
+}
+
+.rental-rental_bookList_delete {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 1em;
+    margin: auto;
+    
+    background: gray;
+    width: 3em;
+    height: 3em;
+    border-radius: 100vh;
+    border: none;
+}
+.rental-rental_bookList_delete::before,
+.rental-rental_bookList_delete::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 10%;
+    height: 80%;
+    background: white;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 100vh;
+}
+.rental-rental_bookList_delete::before {
+    transform: rotate(-45deg);
+}
+.rental-rental_bookList_delete::after {
+    transform: rotate(45deg);
+}
+
+.rental-rental_bookData_name {
+    font-size: 2em;
+    line-height: 1;
+}
+
+.rental-rental_newData {
+    background: #FFE2BF;
+    border-radius: .3em;
+    border-left: .5em solid #F9781A;
+    margin-bottom: 1em;
+    padding: 1em;
+}
+/* rental book data begin */
+
+.rental-rental_Btns {
+    text-align: right;
+    margin-top: 1em;
+}
+
+.rental-rental_rentalBtn {
+    font-size: 1.5em;
+    padding: .3em .8em;
+    border-radius: .3em;
+    color: white;
+    border: none;
+    
+}
