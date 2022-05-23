@@ -18,7 +18,7 @@ class CreateRentalsTable extends Migration
             $table->bigInteger('book_id')->unsigned()->index();
             $table->bigInteger('member_id')->unsigned()->index();
             $table->bigInteger('staff_id')->unsigned()->index();
-            $table->date('returned_at');
+            $table->date('returned_at')->nullable();
             $table->timestamps();
 
             $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
