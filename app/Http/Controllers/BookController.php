@@ -14,7 +14,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = Book::orderby('created_at', 'desc')->paginate(20);
+        $books = Book::with('book_detail')->orderby('created_at', 'desc')->paginate(20);
         return view('books.index', ['books' => $books]);
     }
 
@@ -82,5 +82,15 @@ class BookController extends Controller
     public function destroy(Book $book)
     {
         //
+    }
+
+    public function search(Request $request)
+    {
+        $query = Book::select('id', 'name', 'author', 'publisher');
+        if ($request->book_id) {
+            $query->where('id', '=', $request->book_id);
+        }
+        $books = $query->get();
+        return view('members.search', ['books' => $books]);
     }
 }

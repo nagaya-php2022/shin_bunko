@@ -83,4 +83,14 @@ class StaffController extends Controller
     {
         //
     }
+
+    public function search(Request $request)
+    {
+        $query = Staff::select('id', 'name');
+        if ($request->staff_id) {
+            $query->where('id', '=', $request->staff_id);
+        }
+        $staff = $query->get();
+        return view('staff.search', ['staff' => $staff]);
+    }
 }
