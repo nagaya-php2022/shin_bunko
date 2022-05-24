@@ -20,7 +20,11 @@
     <div class="rental-rental_memberIdCard">
         <label>
             会員ID
-            <input type="number" name="memberId" class="orange-input">
+            <input id="memberId" type="number" name="memberId" class="orange-input" required>
+            <div class="rental-rental_memberInfoMsg">
+                <div id="memberName"></div>
+                <div id="memberError"></div>
+            </div>
         </label>
     </div>
     
@@ -77,13 +81,12 @@
         
         listElement.insertAdjacentHTML("beforeend", bookInputElement);
         document.querySelector('#bookId').addEventListener('keypress', getBookData);
-        document.querySelector('#bookId').select();
-        console.log("event listener added")
     }
     
     function deleteBook(index) {
         bookList.splice(index, 1);
         rebulidBookList(bookList);
+        document.querySelector('#bookId').select();
     }
     
     function getBookData(e) {
@@ -98,21 +101,54 @@
         if(bookId !== "") {
             axios.get(`/book-data/${bookId}`)
             .then(res => {
-                console.log(res);
+                // console.log(res);
                 console.log(res.data);
                 if(res.data.ok) {
                     bookList.push(res.data.book);
                     rebulidBookList(bookList);
+                    document.querySelector('#bookId').select();
                 } else {
                     rebulidBookList(bookList, res.data.error);
+                    document.querySelector('#bookId').select();
                 }
+            });
+        }
+    }
+    
+    function getMemberData(e) {
+        console.log("getBookData")
+        if(e.keyCode !== 13) {
+            return;
+        }
+        e.preventDefault();
+        
+        const memberId = document.querySelector('#memberId').value;
+        if(memberId !== "") {
+            axios.get(`/member-data/${memberId}`)
+            .then(res => {
+                // console.log(res);
+                console.log(res.data);
+                if(res.data.ok) {
+                    document.querySelector('#memberName').innerText = res.data.name;
+                    document.querySelector('#memberError').innerText = "";
+                } else {
+                    document.querySelector('#memberError').innerText = res.data.error;
+                    document.querySelector('#memberName').innerText = "";
+                }
+            })
+            .catch((e) => {
+                console.log(e);
+                document.querySelector('#memberError').innerText = "エラー";
+                document.querySelector('#memberName').innerText = "";
             });
         }
     }
     
     function main() {
         rebulidBookList(bookList);
+        document.querySelector('#memberId').select();
         document.querySelector('#bookId').addEventListener('keypress', getBookData);
+        document.querySelector('#memberId').addEventListener('keypress', getMemberData);
     }
     
     window.addEventListener("DOMContentLoaded", () => {

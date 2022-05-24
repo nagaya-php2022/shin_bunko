@@ -6,6 +6,7 @@
     margin-top: .5em;
 } */
 
+/* member id card begin */
 .rental-rental_memberIdCard {
     background: white;
     border-radius: .5em;
@@ -13,6 +14,15 @@
     width: 20em;
     margin-top: .5em;
 }
+
+.rental-rental_memberInfoMsg {
+    height: 1.2em;
+}
+
+#memberError {
+    color: red;
+}
+/* member id card end */
 
 .rental-rental_bookListContainer {
     background: white;

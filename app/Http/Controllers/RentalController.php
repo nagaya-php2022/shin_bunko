@@ -40,7 +40,6 @@ class RentalController extends Controller
     public function store(Request $request)
     {
         $bookIds = $request->bookIds;
-        print_r($request->all());
         
         foreach ($bookIds as $bookId) {
             $book = new Rental;
@@ -51,7 +50,7 @@ class RentalController extends Controller
             $book->save();
         }
         
-        return array("result" => "success");
+        return view("rentals.create");
     }
 
     /**
