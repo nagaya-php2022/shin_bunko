@@ -3,8 +3,7 @@
 @section('content')
 <h1>貸出検索</h1>
 <!--検索フォーム-->
-    <form action="" method="get"><!--データの送信先の入力-->
-        @csrf
+    <form action="{{ route('rentals.search') }}" method="get"><!--データの送信先の入力-->
         <input type="number" name="book_id" id="book_id" placeholder="資料ID">
         <button type="submit"><i class="fas fa-search"></i></button>
     </form>
@@ -26,16 +25,13 @@
                 <td>{{ $rental->book_id }}</td>
 
                 <!--book_idの参照先のbooksテーブルへ→isbnの参照先のbook_detailsテーブルへ-->
-                <td>{{ $rental->book->book_detail->name }}</td>
+                <td><a href="{{ route('rentals.show', $rental->id) }}">{{ $rental->book->book_detail->name }}</a></td>
 
                 <td>{{ $rental->member_id }}</td>
-                <td>{{ date('Y/m/d', $rental->created_at) }}</td>
-                <td>{{ date('Y/m/d', $rental->returned_at) }}</td>
+                <td>{{ $rental->created_at->toDateString() }}</td>
+                <td>{{ $rental->returned_at }}</td>
             </tr>
         @endforeach
     </tbody>
 </table>
-
-<!--ページ切り替え-->
-{{ $rentals->links() }}
 @endsection

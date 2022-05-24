@@ -3,8 +3,7 @@
 @section('content')
 <h1>職員検索</h1>
 <!--検索フォーム-->
-    <form action="" method="get"><!--データの送信先の入力-->
-        @csrf
+    <form action="{{ route('staff.search') }}" method="get"><!--データの送信先の入力-->
         <input type="number" name="staff_id" id="staff_id" placeholder="職員ID">
         <button type="submit"><i class="fas fa-search"></i></button>
     </form>
@@ -26,7 +25,4 @@
         @endforeach
     </tbody>
 </table>
-
-<!--ページ切り替え-->
-{{ $staff->links() }}
 @endsection
