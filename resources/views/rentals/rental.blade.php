@@ -7,7 +7,6 @@
 
 @section("content")
 <h1>貸出</h1>
-<dl></dl>
 
 <div class="rental-rental_staffIdCard">
     <label>
@@ -46,14 +45,9 @@
         listElement.innerHTML = '';
     }
     
-    function htmlToElements(html) {
-        var template = document.createElement('template');
-        template.innerHTML = html;
-        return template.content.childNodes;
-    }
-    
-    function rebulidBookList(list, error) {
+    function rebulidBookList(list, error="") {
         const listElement = document.querySelector('#bookList');
+        
         const bookInputElement = `<div class='rental-rental_newData'>\
             <label>\
                 資料ID <br>\
@@ -85,25 +79,22 @@
     }
     
     function getBookData(e) {
-        // alert("getBookData")
-        if(e === undefined || e.keyCode !== 13) {
+        if(e.keyCode !== 13) {
             return;
         }
         e.preventDefault();
-        console.log("getBookData")
-        console.log(e.keyCode);
         
         const bookId = document.querySelector('#bookId').value;
         
         if(bookId !== "") {
             axios.get(`/book-data/${bookId}`)
             .then(res => {
+                console.log(res);
                 console.log(res.data);
                 if(res.data.ok) {
                     bookList.push(res.data.book);
                     rebulidBookList(bookList);
                 } else {
-                    bookList.push(res.data.book);
                     rebulidBookList(bookList, res.data.error);
                 }
             });
@@ -111,27 +102,14 @@
     }
     
     function main() {
-        const bookIdInput = 
-        rebulidBookList([]);
+        rebulidBookList(bookList);
         document.querySelector('#bookId').addEventListener('keypress', getBookData);
     }
+    
     window.addEventListener("DOMContentLoaded", () => {
         main();
     })
     
     
 </script>
-{{-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script> --}}
-{{-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> --}}
-{{-- <script>
-    const app = new Vue({
-        el: "#app",
-        data: {
-            staffId: null,
-            books: [],
-        },
-        methods: {},
-        created: {},
-    });
-</script> --}}
 @endsection
