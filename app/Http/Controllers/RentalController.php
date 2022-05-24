@@ -28,7 +28,7 @@ class RentalController extends Controller
      */
     public function create()
     {
-        return view("rentals.rental");
+        return view("rentals.create");
     }
 
     /**
@@ -39,7 +39,19 @@ class RentalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $bookIds = $request->bookIds;
+        print_r($request->all());
+        
+        foreach ($bookIds as $bookId) {
+            $book = new Rental;
+            $book->book_id = $bookId;
+            // $book->staff_id = \Auth::user()->id;
+            $book->staff_id = 1;
+            $book->member_id = $request->memberId;
+            $book->save();
+        }
+        
+        return array("result" => "success");
     }
 
     /**

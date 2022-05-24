@@ -40,5 +40,7 @@ Route::get('rentals/search', [RentalController::class, 'search'])->name('rentals
 
 Route::resource('members', MemberController::class);
 Route::resource('staff', StaffController::class);
+
+
 Route::resource('rentals', RentalController::class);
 Route::resource('books', BookController::class);

@@ -1,8 +1,17 @@
-.rental-rental_staffIdCard {
+/* .rental-rental_staffIdCard {
     background: white;
     border-radius: .5em;
     padding: 1em;
     width: 20em;
+    margin-top: .5em;
+} */
+
+.rental-rental_memberIdCard {
+    background: white;
+    border-radius: .5em;
+    padding: 1em;
+    width: 20em;
+    margin-top: .5em;
 }
 
 .rental-rental_bookListContainer {

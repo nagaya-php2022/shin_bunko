@@ -8,15 +8,22 @@
 @section("content")
 <h1>貸出</h1>
 
-<div class="rental-rental_staffIdCard">
-    <label>
-        職員ID
-        <input type="number" name="staffId" class="orange-input">
-    </label>
-</div>
-
 <form action="{{ route('rentals.store') }}" method="post">
     @csrf
+    {{-- <div class="rental-rental_staffIdCard">
+        <label>
+            職員ID
+            <input type="number" name="staffId" class="orange-input">
+        </label>
+    </div> --}}
+    
+    <div class="rental-rental_memberIdCard">
+        <label>
+            会員ID
+            <input type="number" name="memberId" class="orange-input">
+        </label>
+    </div>
+    
     <div id="bookList" class="rental-rental_bookListContainer">
         
         <div class="rental-rental_newData">
@@ -51,7 +58,7 @@
         const bookInputElement = `<div class='rental-rental_newData'>\
             <label>\
                 資料ID <br>\
-                <input id='bookId' type='number'>\
+                <input id='bookId' name='bookId' type='number'>\
                 <div class='rental-rental_newData_error'>${error}</div>\
             </label>\
         </div>`;
@@ -60,6 +67,7 @@
         list.forEach((book, index) => {
             const bookDataElement = `<div class='rental-rental_bookData'>\
                 <div class='rental-rental_bookData_name'>${book.detail.name}</div>\
+                <input type='hidden' name='bookIds[]' value="${book.id}">\
                 <div class='bookId'>12345678</div>\
                 <div class='groupCode'>12345678</div>\
                 <button onclick='deleteBook(${index})' class='rental-rental_bookList_delete'></button>\
@@ -79,6 +87,7 @@
     }
     
     function getBookData(e) {
+        console.log("getBookData")
         if(e.keyCode !== 13) {
             return;
         }
