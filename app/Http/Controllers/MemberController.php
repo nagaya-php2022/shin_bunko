@@ -47,7 +47,7 @@ class MemberController extends Controller
      */
     public function show(Member $member)
     {
-        //
+        return view('members.show', ['member' => $member]);
     }
 
     /**
@@ -82,5 +82,15 @@ class MemberController extends Controller
     public function destroy(Member $member)
     {
         //
+    }
+
+    public function search(Request $request)
+    {
+        $query = Member::select('id', 'name', 'tel');
+        if ($request->member_id) {
+            $query->where('id', '=', $request->member_id);
+        }
+        $members = $query->get();
+        return view('members.search', ['members' => $members]);
     }
 }

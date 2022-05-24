@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Book extends Model
 {
     use HasFactory;
+
+    public function rentals()
+    {
+        return $this->hasMany(Rental::class);
+    }
+
+    public function book_detail()
+    {
+        return $this->belongsTo(BookDetail::class, 'isbn', 'isbn');
+    }
 }

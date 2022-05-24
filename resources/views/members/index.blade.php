@@ -15,7 +15,7 @@
     </form>-->
 
 <!--検索ボタン-->
-<a href="">検索</a><!--会員検索画面へ遷移-->
+<a href="{{ route('members.search') }}">検索</a><!--会員検索画面へ遷移-->
 
 <!--一覧表示-->
     <table class="table"><!--テーブルのクラス名確認-->
@@ -30,7 +30,7 @@
             @foreach ($members as $member) <!--membersテーブルのデータを引っ張ってくる-->
                 <tr>
                     <td>{{ $member->id }}</td>
-                    <td>{{ $member->name }}</td>
+                    <td><a href="{{ route('members.show', $member->id) }}">{{ $member->name }}</a></td>
                     <td>{{ $member->tel }}</td>
                 </tr>
             @endforeach
