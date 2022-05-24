@@ -5,6 +5,7 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\BookController;
 use App\Http\controllers\RentalController;
+use App\Http\controllers\BookDetailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,3 +40,4 @@ Route::resource('members', MemberController::class);
 Route::resource('staff', StaffController::class);
 Route::resource('rentals', RentalController::class);
 Route::resource('books', BookController::class);
+Route::resource('book_details',BookDetailController::class);

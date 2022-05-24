@@ -25,7 +25,8 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        $books = new Book;
+        return view('books.create',['books' => $books]);
     }
 
     /**
@@ -36,7 +37,8 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $books = $request->user()->books()->create($request->all());
+        return redirect(route('books.index'));
     }
 
     /**
@@ -45,9 +47,9 @@ class BookController extends Controller
      * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function show(Book $book)
+    public function show(Book $books)
     {
-        return view('books.show', ['book' => $book]);
+        return view('books.show', ['book' => $books]);
     }
 
     /**
@@ -58,7 +60,7 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        //
+        return view('books.edit',['book' => $book]);
     }
 
     /**
@@ -70,7 +72,8 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        //
+        $books->update($request->all());
+        return redirect(route('books.show',$books));
     }
 
     /**
@@ -81,7 +84,8 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        //
+        $books->delete();
+        return redirect(route('books.show'));
     }
 
     public function search(Request $request)

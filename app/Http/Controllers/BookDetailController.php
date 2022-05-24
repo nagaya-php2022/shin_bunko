@@ -24,7 +24,8 @@ class BookDetailController extends Controller
      */
     public function create()
     {
-        //
+        $bookDetail = new BookDetail;
+        return view('book_details.create',['book_detail' => $bookDetail]);
     }
 
     /**
@@ -35,7 +36,8 @@ class BookDetailController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $bookDetail = $request->user()->book_details()->create($request->all());
+        return redirect(route('index'));
     }
 
     /**
@@ -46,7 +48,7 @@ class BookDetailController extends Controller
      */
     public function show(BookDetail $bookDetail)
     {
-        //
+        return view('book_details.show', ['book_detail' => $bookDetail]);
     }
 
     /**
@@ -57,7 +59,7 @@ class BookDetailController extends Controller
      */
     public function edit(BookDetail $bookDetail)
     {
-        //
+        return view('book_details.edit',['book_detail' => $bookDetail]);
     }
 
     /**
@@ -69,7 +71,8 @@ class BookDetailController extends Controller
      */
     public function update(Request $request, BookDetail $bookDetail)
     {
-        //
+        $bookDetail->update($request->all());
+        return redirect(route('book_details.show',$bookDetail));
     }
 
     /**
@@ -80,6 +83,7 @@ class BookDetailController extends Controller
      */
     public function destroy(BookDetail $bookDetail)
     {
-        //
+        $bookDetail->delete();
+        return redirect(route('book_details.show'));
     }
 }
