@@ -33,12 +33,15 @@ Route::get('/', function () {
 Route::get('members/search', [MemberController::class, 'search'])->name('members.search');
 Route::get('staff/search', [StaffController::class, 'search'])->name('staff.search');
 
-Route::get('book-data/{id}', [BookController::class, "bookData"]);
+Route::get('member-data/{id}', [MemberController::class, "memberInfo"]);
+Route::get('book-data/{id}', [BookController::class, "rentableBookData"]);
 
 Route::get('books/search', [BookController::class, 'search'])->name('books.search');
 Route::get('rentals/search', [RentalController::class, 'search'])->name('rentals.search');
 
 Route::resource('members', MemberController::class);
 Route::resource('staff', StaffController::class);
+
+
 Route::resource('rentals', RentalController::class);
 Route::resource('books', BookController::class);

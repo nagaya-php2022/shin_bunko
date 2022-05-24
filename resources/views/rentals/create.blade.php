@@ -7,17 +7,27 @@
 
 @section("content")
 <h1>貸出</h1>
-<dl></dl>
-
-<div class="rental-rental_staffIdCard">
-    <label>
-        職員ID
-        <input type="number" name="staffId" class="orange-input">
-    </label>
-</div>
 
 <form action="{{ route('rentals.store') }}" method="post">
     @csrf
+    {{-- <div class="rental-rental_staffIdCard">
+        <label>
+            職員ID
+            <input type="number" name="staffId" class="orange-input">
+        </label>
+    </div> --}}
+    
+    <div class="rental-rental_memberIdCard">
+        <label>
+            会員ID
+            <input id="memberId" type="number" name="memberId" class="orange-input" required>
+            <div class="rental-rental_memberInfoMsg">
+                <div id="memberName"></div>
+                <div id="memberError"></div>
+            </div>
+        </label>
+    </div>
+    
     <div id="bookList" class="rental-rental_bookListContainer">
         
         <div class="rental-rental_newData">
@@ -46,25 +56,22 @@
         listElement.innerHTML = '';
     }
     
-    function htmlToElements(html) {
-        var template = document.createElement('template');
-        template.innerHTML = html;
-        return template.content.childNodes;
-    }
-    
-    function rebulidBookList(list) {
+    function rebulidBookList(list, error="") {
         const listElement = document.querySelector('#bookList');
-        const bookInputElement = "<div class='rental-rental_newData'>\
+        
+        const bookInputElement = `<div class='rental-rental_newData'>\
             <label>\
                 資料ID <br>\
-                <input id='bookId' type='number'>\
+                <input id='bookId' name='bookId' type='number'>\
+                <div class='rental-rental_newData_error'>${error}</div>\
             </label>\
-        </div>";
+        </div>`;
         clearBookList();
         
         list.forEach((book, index) => {
             const bookDataElement = `<div class='rental-rental_bookData'>\
                 <div class='rental-rental_bookData_name'>${book.detail.name}</div>\
+                <input type='hidden' name='bookIds[]' value="${book.id}">\
                 <div class='bookId'>12345678</div>\
                 <div class='groupCode'>12345678</div>\
                 <button onclick='deleteBook(${index})' class='rental-rental_bookList_delete'></button>\
@@ -74,62 +81,80 @@
         
         listElement.insertAdjacentHTML("beforeend", bookInputElement);
         document.querySelector('#bookId').addEventListener('keypress', getBookData);
-        document.querySelector('#bookId').select();
-        console.log("event listener added")
     }
     
     function deleteBook(index) {
         bookList.splice(index, 1);
         rebulidBookList(bookList);
+        document.querySelector('#bookId').select();
     }
     
     function getBookData(e) {
-        // alert("getBookData")
-        if(e === undefined || e.keyCode !== 13) {
+        console.log("getBookData")
+        if(e.keyCode !== 13) {
             return;
         }
         e.preventDefault();
-        console.log("getBookData")
-        console.log(e.keyCode);
         
         const bookId = document.querySelector('#bookId').value;
         
         if(bookId !== "") {
             axios.get(`/book-data/${bookId}`)
             .then(res => {
+                // console.log(res);
                 console.log(res.data);
                 if(res.data.ok) {
-                    bookList.push(res.data.data);
+                    bookList.push(res.data.book);
                     rebulidBookList(bookList);
+                    document.querySelector('#bookId').select();
                 } else {
-                    
+                    rebulidBookList(bookList, res.data.error);
+                    document.querySelector('#bookId').select();
                 }
             });
         }
     }
     
-    function main() {
-        const bookIdInput = 
-        rebulidBookList([]);
-        document.querySelector('#bookId').addEventListener('keypress', getBookData);
+    function getMemberData(e) {
+        console.log("getBookData")
+        if(e.keyCode !== 13) {
+            return;
+        }
+        e.preventDefault();
+        
+        const memberId = document.querySelector('#memberId').value;
+        if(memberId !== "") {
+            axios.get(`/member-data/${memberId}`)
+            .then(res => {
+                // console.log(res);
+                console.log(res.data);
+                if(res.data.ok) {
+                    document.querySelector('#memberName').innerText = res.data.name;
+                    document.querySelector('#memberError').innerText = "";
+                } else {
+                    document.querySelector('#memberError').innerText = res.data.error;
+                    document.querySelector('#memberName').innerText = "";
+                }
+            })
+            .catch((e) => {
+                console.log(e);
+                document.querySelector('#memberError').innerText = "エラー";
+                document.querySelector('#memberName').innerText = "";
+            });
+        }
     }
+    
+    function main() {
+        rebulidBookList(bookList);
+        document.querySelector('#memberId').select();
+        document.querySelector('#bookId').addEventListener('keypress', getBookData);
+        document.querySelector('#memberId').addEventListener('keypress', getMemberData);
+    }
+    
     window.addEventListener("DOMContentLoaded", () => {
         main();
     })
     
     
 </script>
-{{-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script> --}}
-{{-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script> --}}
-{{-- <script>
-    const app = new Vue({
-        el: "#app",
-        data: {
-            staffId: null,
-            books: [],
-        },
-        methods: {},
-        created: {},
-    });
-</script> --}}
 @endsection
