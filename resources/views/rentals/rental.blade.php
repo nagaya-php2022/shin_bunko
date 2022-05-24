@@ -52,14 +52,15 @@
         return template.content.childNodes;
     }
     
-    function rebulidBookList(list) {
+    function rebulidBookList(list, error) {
         const listElement = document.querySelector('#bookList');
-        const bookInputElement = "<div class='rental-rental_newData'>\
+        const bookInputElement = `<div class='rental-rental_newData'>\
             <label>\
                 資料ID <br>\
                 <input id='bookId' type='number'>\
+                <div class='rental-rental_newData_error'>${error}</div>\
             </label>\
-        </div>";
+        </div>`;
         clearBookList();
         
         list.forEach((book, index) => {
@@ -99,10 +100,11 @@
             .then(res => {
                 console.log(res.data);
                 if(res.data.ok) {
-                    bookList.push(res.data.data);
+                    bookList.push(res.data.book);
                     rebulidBookList(bookList);
                 } else {
-                    
+                    bookList.push(res.data.book);
+                    rebulidBookList(bookList, res.data.error);
                 }
             });
         }

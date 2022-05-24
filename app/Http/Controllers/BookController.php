@@ -75,7 +75,7 @@ class BookController extends Controller
             $ok = false;
             $error = "本のデータがみつかりませんでした";
         }
-        return array("ok" => $ok, "data" => $book, "rental" => $rental);
+        return array("ok" => $ok, "book" => $book, "rental" => $rental);
     }
     
     /**

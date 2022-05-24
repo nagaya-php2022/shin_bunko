@@ -70,6 +70,11 @@
     margin-bottom: 1em;
     padding: 1em;
 }
+
+.rental-rental_newData_error {
+    height: 1.2em;
+    color: red;
+}
 /* rental book data begin */
 
 .rental-rental_Btns {
