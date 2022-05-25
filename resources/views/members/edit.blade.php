@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-会員編集
+資料編集
 @endsection
 @section('content')
 
@@ -26,6 +26,6 @@
     <input type="date" name="birthday" value="{{$member->birthday}}">
   </label></br>
 
-    <input type="submit" value="保存">
+ <input type="submit" value="保存">
 </form>
 @endsection

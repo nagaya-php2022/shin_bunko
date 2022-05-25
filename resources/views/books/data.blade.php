@@ -1,4 +1,14 @@
+
 <dl class="bookData-container">
+	@if (isset($showEditBtn) && $showEditBtn)
+	<div class="show-editContainer">
+		<a class="orange-btn clickable btn" href="{{ route('books.edit', $book->id) }}">
+			編集する
+			<i class="fas fa-edit"></i>
+		</a>
+	</div>
+	@endif
+	
 	<dt>資料ID</dt>
 	<dd>{{ $book->id }}</dd>
 	<dt>ISBN番号</dt>

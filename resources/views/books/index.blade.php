@@ -1,15 +1,25 @@
 @extends('layouts.app')
 
+@section("style")
+<link rel="stylesheet" href="/css/index-common-style.css">
+@endsection
+
 @section('content')
 <h1>資料一覧</h1>
 
-<!--検索ボタン-->
-<a href="{{ route('books.search') }}">検索</a><!--資料検索画面へ遷移-->
-
 <!--一覧表示-->
-    <table class="table"><!--テーブルのクラス名確認-->
+<div class="table-container">
+    <div class="index-searchContainer">
+        <!--検索ボタン-->
+        <a class="clickable index-searchBtn" href="{{ route('books.search') }}">
+            検索
+            <i class="fas fa-search"></i>
+        </a>
+    </div>
+    
+    <table class="table table-striped"><!--テーブルのクラス名確認-->
         <thead>
-            <tr>
+            <tr class="navy-bg">
                 <th>資料ID</th>
                 <th>タイトル</th>
                 <th>著者</th>
@@ -27,6 +37,7 @@
             @endforeach
         </tbody>
     </table>
+</div>
 
 <!--ページ切り替え-->
     {{ $books->links() }}
