@@ -27,7 +27,8 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        $books = new Book;
+        return view('books.create',['books' => $books]);
     }
 
     /**
@@ -38,7 +39,8 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $books = $request->user()->books()->create($request->all());
+        return redirect(route('books.index'));
     }
 
     /**
@@ -47,35 +49,42 @@ class BookController extends Controller
      * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function show(Book $book)
+    public function show(Book $books)
     {
-        return view('books.show', ['book' => $book]);
+        return view('books.show', ['book' => $books]);
     }
     
-    public function bookData($id) {
+    public function rentableBookData($id) {
         $ok = true;
+        $error = "";
         $book = Book::where("id", $id)->first();
         if(!is_null($book)) {
             $book["detail"] = BookDetail::where("isbn", $book->isbn)->first();
+            
+            $exists = Rental::where("book_id", $book->id)
+                ->orderBy("created_at", "desc")
+                ->limit(1)
+                ->exists();
+            
+            if($exists) {
+                $rental = Rental::where("book_id", $book->id)
+                    ->orderBy("created_at", "desc")
+                    ->limit(1)
+                    ->get()[0];
+                    
+                if(!isset($rental->returned_at)) {
+                    $ok = false;
+                    $error = "返却されていない資料です";
+                }
+            }
         }
-        
-        // 返却チェック
-        $rental = Rental::where("book_id", $book->id)
-            ->orderBy("created_at", "desc")
-            ->take(1)
-            ->get();
-        if(!is_null($rental) && is_null($rental->returned_at)) {
-            $ok = false;
-            $error = "返却されていない資料です";
-        }
-        
         
         // 資料データの有無
         if(is_null($book) || is_null($book["detail"])) {
             $ok = false;
             $error = "本のデータがみつかりませんでした";
         }
-        return array("ok" => $ok, "data" => $book, "rental" => $rental);
+        return array("ok" => $ok, "book" => $book, "error" => $error);
     }
     
     /**
@@ -86,7 +95,7 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        //
+        return view('books.edit',['book' => $book]);
     }
 
     /**
@@ -98,7 +107,8 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        //
+        $books->update($request->all());
+        return redirect(route('books.show',$books));
     }
 
     /**
@@ -109,7 +119,8 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        //
+        $books->delete();
+        return redirect(route('books.show'));
     }
 
     public function search(Request $request)

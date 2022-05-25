@@ -5,6 +5,7 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\BookController;
 use App\Http\controllers\RentalController;
+use App\Http\controllers\BookDetailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,3 +50,4 @@ Route::post("rentals/return", [RentalController::class, 'returnBooks'])->name("r
 Route::get("rentals/edit", [RentalController::class, 'edit'])->name('rentals.edit');
 Route::resource('rentals', RentalController::class);
 Route::resource('books', BookController::class);
+Route::resource('book_details',BookDetailController::class);
