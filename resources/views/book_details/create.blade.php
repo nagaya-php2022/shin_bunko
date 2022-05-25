@@ -6,7 +6,7 @@ isbn登録
 @section('content')
 
 <h1>isbn登録</h1>
-<form method="POST" action="{{route('book_details.create')}}">
+<form method="POST" action="{{route('book_details.store')}}">
     @csrf
     <label>ISBN番号</br>
         <input type="number" name="isbn" value="">

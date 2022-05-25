@@ -3,7 +3,8 @@
 @section('content')
 
 <h1>資料登録</h1>
-<form method="POST" action="">
+<form method="POST" action="{{route('books.store')}}">
+    @csrf
     <label>資料名</br>
     <input type="text" name="name" value=""></label></br>
     <label>ISBN番号</br>

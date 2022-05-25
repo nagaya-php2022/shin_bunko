@@ -11,6 +11,8 @@ class BookDetail extends Model
     
     protected $primaryKey = 'isbn';
 
+    protected $fillable = ['isbn','name','group_code','author','publisher','published_at'];
+
     public function books()
     {
         return $this->hasMany(Book::class);
