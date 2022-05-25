@@ -25,7 +25,7 @@ class MemberController extends Controller
         try {
             $member = Member::where("id", $id)->first();
             if(is_null($member)) {
-               $error = "会員データが見つかりません"; 
+                $error = "会員データが見つかりません"; 
             } else {
                 $ok = true;
             }
@@ -55,7 +55,7 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        $member = $request->user()->members()->create($request->all());
+        $member = Member::create($request->all());
         return redirect(route('members.index'));
     }
 

@@ -9,6 +9,8 @@ class Member extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name', 'address', 'tel', 'email', 'birthday'];
+
     public function rentals()
     {
         return $this->hasMany(Rental::class);
