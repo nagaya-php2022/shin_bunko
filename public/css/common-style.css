@@ -14,7 +14,7 @@ h1 {
     margin-top: 1em;
     margin-bottom: 1em;
     border-radius: 100vh;
-    background-color: #F9781A;
+    background: #023c4c;
     color: white;
     text-align: center;
 }
@@ -35,6 +35,7 @@ input[type=number] {
 
 .navy-bg {
   background: #023c4c;
+  color: white;
 }
 
 .orange-input {

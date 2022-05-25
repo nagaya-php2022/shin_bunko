@@ -18,6 +18,9 @@ use App\Http\controllers\BookDetailController;
 |
 */
 
+Route::get('/home', function () {
+    return view('home');
+});
 Route::get('/', function () {
     return view('home');
 });

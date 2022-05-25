@@ -14,13 +14,13 @@
         <!--検索ボタン-->
         <a class="clickable index-searchBtn" href="{{ route('rentals.search') }}">
             検索
-            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fas fa-search"></i>
         </a><!--資料検索画面へ遷移-->
     </div>
     
     <table class="table table-striped"><!--テーブルのクラス名確認-->
         <thead>
-            <tr class="orange-bg">
+            <tr class="navy-bg">
                 <th>資料ID</th>
                 <th>タイトル</th>
                 <th>利用会員ID</th>

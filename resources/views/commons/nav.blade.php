@@ -4,10 +4,22 @@
             <img src="/img/header-icon.png">
         </div>
         {{-- ログアウト --}}
-        {{-- <form id="logout-form" action="{{ route('logout') }}" method="post">
+        @if (\Auth::check())
+        <form id="logout-form" action="{{ route('logout') }}" method="post">
             @csrf
-            <input type="submit" value="ログアウト">
-        </form> --}}
+            <div class="header-logoutForm">
+                <span class="header-staffName">
+                    <span>
+                        {{ \Auth::user()->name }}さん
+                    </span>
+                    <span>
+                        (ID:{{ \Auth::id() }})
+                    </span>
+                </span>
+                <input type="submit" value="ログアウト &#xf08b;">
+            </div>
+        </form>
+        @endif
         {{-- メニュー --}}
         <ul class="header-navigation">
             <li>
