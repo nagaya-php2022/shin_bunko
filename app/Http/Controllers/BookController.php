@@ -59,14 +59,21 @@ class BookController extends Controller
         if(!is_null($book)) {
             $book["detail"] = BookDetail::where("isbn", $book->isbn)->first();
             
-            // 返却チェック
-            $rental = Rental::where("book_id", $book->id)
+            $exists = Rental::where("book_id", $book->id)
                 ->orderBy("created_at", "desc")
-                ->take(1)
-                ->get();
-            if(!is_null($rental) && isset($rental->returned_at)) {
-                $ok = false;
-                $error = "返却されていない資料です";
+                ->limit(1)
+                ->exists();
+            
+            if($exists) {
+                $rental = Rental::where("book_id", $book->id)
+                    ->orderBy("created_at", "desc")
+                    ->limit(1)
+                    ->get()[0];
+                    
+                if(!isset($rental->returned_at)) {
+                    $ok = false;
+                    $error = "返却されていない資料です";
+                }
             }
         }
         

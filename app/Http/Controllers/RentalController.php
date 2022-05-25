@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Rental;
 use Illuminate\Http\Request;
+use DateTime;
 
 class RentalController extends Controller
 {
@@ -50,7 +51,7 @@ class RentalController extends Controller
             $book->save();
         }
         
-        return view("rentals.create");
+        return redirect()->route("rentals.create");
     }
 
     /**
@@ -68,6 +69,49 @@ class RentalController extends Controller
     }
 
     /**
+     * get book name and check returnable from return page(rental/edit)
+     * 
+     * @param $book_id
+     */
+    public function returnableBookData($book_id) {
+        $error = "";
+        $name = "";
+        $id = "";
+        $bookId = "";
+        $ok = false;
+        
+        $exists = Rental::where("book_id", $book_id)
+            ->orderBy("created_at", "desc")
+            ->limit(1)
+            ->exists();
+        
+        if($exists) {
+            $rental = Rental::where("book_id", $book_id)
+                ->orderBy("created_at", "desc")
+                ->limit(1)
+                ->get()[0];
+            
+            if(!is_null($rental->returned_at)) {
+                $error = "また貸出処理が済んでいない資料です";
+            } else {
+                $name = $rental->book->book_detail->name;
+                $bookId = $rental->book->id;
+                $id = $rental->id;
+                $ok = true;
+            }
+        } else {
+            $error = "また貸出処理が済んでいない資料です";
+        }
+        
+        return array(
+            // "rental" => $rental,
+            "rental" => array( "name" => $name, "id" => $id, "bookId" => $bookId),
+            "ok" => $ok,
+            "error" => $error,
+        );
+    }
+    
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Rental  $rental
@@ -75,9 +119,27 @@ class RentalController extends Controller
      */
     public function edit(Rental $rental)
     {
-        //
+        return view("rentals.edit");
     }
 
+    /**
+     * Return from return page
+     * 
+     * @param int[] $rental_ids
+     */
+    public function returnBooks(Request $request) {
+        
+        foreach ($request->rentalIds as $rental_id) {
+            $rental = Rental::find($rental_id);
+            if(!is_null($rental)) {
+                $rental->returned_at = new DateTime();
+                $rental->save();
+            }
+        }
+        
+        return redirect("rentals/edit");
+    }
+    
     /**
      * Update the specified resource in storage.
      *

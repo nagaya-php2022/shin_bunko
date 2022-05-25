@@ -6,27 +6,10 @@
 @endsection
 
 @section("content")
-<h1>貸出</h1>
+<h1>返却</h1>
 
-<form action="{{ route('rentals.store') }}" method="post">
+<form action="{{ route('rentals.return') }}" method="post">
     @csrf
-    {{-- <div class="rental-rental_staffIdCard">
-        <label>
-            職員ID
-            <input type="number" name="staffId" class="orange-input">
-        </label>
-    </div> --}}
-    
-    <div class="rental-rental_memberIdCard">
-        <label>
-            会員ID
-            <input id="memberId" type="number" name="memberId" class="orange-input" required>
-            <div class="rental-rental_memberInfoMsg">
-                <div id="memberName"></div>
-                <div id="memberError"></div>
-            </div>
-        </label>
-    </div>
     
     <div id="bookList" class="rental-rental_bookListContainer">
         
@@ -39,7 +22,7 @@
     </div>
     
     <div class="rental-rental_Btns">
-        <input type="submit" value="貸出" class="orange-btn rental-rental_rentalBtn">
+        <input type="submit" value="返却" class="orange-btn rental-rental_rentalBtn">
     </div>
 </form>
 
@@ -68,11 +51,11 @@
         </div>`;
         clearBookList();
         
-        list.forEach((book, index) => {
+        list.forEach((rental, index) => {
             const bookDataElement = `<div class='rental-rental_bookData'>\
-                <div class='rental-rental_bookData_name'>${book.detail.name}</div>\
-                <input type='hidden' name='bookIds[]' value="${book.id}">\
-                <div class='bookId'>資料ID: ${book.id}</div>\
+                <div class='rental-rental_bookData_name'>${rental.name}</div>\
+                <input type='hidden' name='rentalIds[]' value="${rental.id}">\
+                <div class='bookId'>資料ID: ${rental.bookId}</div>\
                 <button onclick='deleteBook(${index})' class='rental-rental_bookList_delete'></button>\
             </div>`;
             listElement.insertAdjacentHTML("beforeend", bookDataElement);
@@ -89,7 +72,7 @@
     }
     
     function getBookData(e) {
-        console.log("getBookData")
+        // console.log("getBookData")
         if(e.keyCode !== 13) {
             return;
         }
@@ -98,12 +81,12 @@
         const bookId = document.querySelector('#bookId').value;
         
         if(bookId !== "") {
-            axios.get(`/book-data/${bookId}`)
+            axios.get(`/rental-data/${bookId}`)
             .then(res => {
                 // console.log(res);
                 console.log(res.data);
                 if(res.data.ok) {
-                    bookList.push(res.data.book);
+                    bookList.push(res.data.rental);
                     rebulidBookList(bookList);
                     document.querySelector('#bookId').select();
                 } else {
@@ -145,9 +128,9 @@
     
     function main() {
         rebulidBookList(bookList);
-        document.querySelector('#memberId').select();
         document.querySelector('#bookId').addEventListener('keypress', getBookData);
-        document.querySelector('#memberId').addEventListener('keypress', getMemberData);
+        document.querySelector('#bookId').select();
+        // document.querySelector('#memberId').addEventListener('keypress', getMemberData);
     }
     
     window.addEventListener("DOMContentLoaded", () => {
