@@ -1,9 +1,28 @@
-.rental-rental_staffIdCard {
+/* .rental-rental_staffIdCard {
     background: white;
     border-radius: .5em;
     padding: 1em;
     width: 20em;
+    margin-top: .5em;
+} */
+
+/* member id card begin */
+.rental-rental_memberIdCard {
+    background: white;
+    border-radius: .5em;
+    padding: 1em 1em .5em;
+    width: 20em;
+    margin-top: .5em;
 }
+
+.rental-rental_memberInfoMsg {
+    height: 1.2em;
+}
+
+#memberError {
+    color: red;
+}
+/* member id card end */
 
 .rental-rental_bookListContainer {
     background: white;
@@ -69,6 +88,11 @@
     border-left: .5em solid #F9781A;
     margin-bottom: 1em;
     padding: 1em;
+}
+
+.rental-rental_newData_error {
+    height: 1.2em;
+    color: red;
 }
 /* rental book data begin */
 
