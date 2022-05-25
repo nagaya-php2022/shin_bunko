@@ -2,6 +2,7 @@
 
 @section('style')
 <link rel="stylesheet" href="/css/data-container-style.css">
+<link rel="stylesheet" href="/css/show-common-style.css">
 @endsection
 
 @section('title')
@@ -11,7 +12,7 @@
 @section('content')
 
 <h1>資料詳細</h1>
-@include('books.data') 
+@include('books.data', ["showEditBtn" => true]) 
   <form action="{{ route('books.destroy', $book->id) }}" method="post">
     @csrf
     @method('delete')
