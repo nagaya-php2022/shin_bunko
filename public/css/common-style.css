@@ -1,0 +1,33 @@
+body {
+    background: #F0F0F0;
+}
+
+h1 {
+    font-size: 2rem;
+    width: 10em;
+    padding: .5em;
+    margin: auto;
+    border-radius: 100vh;
+    background-color: #F9781A;
+    color: white;
+    text-align: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.orange-input {
+    border: solid 2px #FF9244;
+    border-radius: .3em;
+}
+
+.orange-btn {
+    background: #F9781A;
+}

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\BookDetail;
+use App\Models\Rental;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -51,7 +53,40 @@ class BookController extends Controller
     {
         return view('books.show', ['book' => $books]);
     }
-
+    
+    public function rentableBookData($id) {
+        $ok = true;
+        $error = "";
+        $book = Book::where("id", $id)->first();
+        if(!is_null($book)) {
+            $book["detail"] = BookDetail::where("isbn", $book->isbn)->first();
+            
+            $exists = Rental::where("book_id", $book->id)
+                ->orderBy("created_at", "desc")
+                ->limit(1)
+                ->exists();
+            
+            if($exists) {
+                $rental = Rental::where("book_id", $book->id)
+                    ->orderBy("created_at", "desc")
+                    ->limit(1)
+                    ->get()[0];
+                    
+                if(!isset($rental->returned_at)) {
+                    $ok = false;
+                    $error = "返却されていない資料です";
+                }
+            }
+        }
+        
+        // 資料データの有無
+        if(is_null($book) || is_null($book["detail"])) {
+            $ok = false;
+            $error = "本のデータがみつかりませんでした";
+        }
+        return array("ok" => $ok, "book" => $book, "error" => $error);
+    }
+    
     /**
      * Show the form for editing the specified resource.
      *
