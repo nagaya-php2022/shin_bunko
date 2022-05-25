@@ -19,7 +19,7 @@ use App\Http\controllers\BookDetailController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 /*Route::post('auth/confirm', function($request){
     $hash = array(
@@ -33,11 +33,21 @@ Route::get('/', function () {
 })->name('members.search');*/
 Route::get('members/search', [MemberController::class, 'search'])->name('members.search');
 Route::get('staff/search', [StaffController::class, 'search'])->name('staff.search');
+
+Route::get('member-data/{id}', [MemberController::class, "memberInfo"]);
+Route::get('book-data/{id}', [BookController::class, "rentableBookData"]);
+
 Route::get('books/search', [BookController::class, 'search'])->name('books.search');
 Route::get('rentals/search', [RentalController::class, 'search'])->name('rentals.search');
 
 Route::resource('members', MemberController::class);
 Route::resource('staff', StaffController::class);
+
+
+Route::get("rental-data/{book_id}", [RentalController::class, 'returnableBookData']);
+Route::post("rentals/return", [RentalController::class, 'returnBooks'])->name("rentals.return");
+
+Route::get("rentals/edit", [RentalController::class, 'edit'])->name('rentals.edit');
 Route::resource('rentals', RentalController::class);
 Route::resource('books', BookController::class);
 Route::resource('book_details',BookDetailController::class);

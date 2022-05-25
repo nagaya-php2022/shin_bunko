@@ -17,6 +17,24 @@ class MemberController extends Controller
         $members = Member::orderby('created_at', 'desc')->paginate(20);
         return view('members.index', ['members' => $members]);
     }
+    
+    public function memberInfo($id) {
+        $ok = false;
+        $error = "";
+        
+        try {
+            $member = Member::where("id", $id)->first();
+            if(is_null($member)) {
+               $error = "会員データが見つかりません"; 
+            } else {
+                $ok = true;
+            }
+        } catch(\Exception $e) {
+            $error = "エラー";
+        }
+        
+        return array("ok" => $ok, "name" => $member->name, "error" => $error);
+    }
 
     /**
      * Show the form for creating a new resource.
