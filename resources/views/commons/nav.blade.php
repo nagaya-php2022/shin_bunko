@@ -1,12 +1,15 @@
 <header>
-    <div class="container">
+    <div class="header-container">
+        <div class="header-icon">
+            <img src="/img/header-icon.png">
+        </div>
         {{-- ログアウト --}}
-        <form id="logout-form" action="{{ route('logout') }}" method="post">
+        {{-- <form id="logout-form" action="{{ route('logout') }}" method="post">
             @csrf
             <input type="submit" value="ログアウト">
-        </form>
+        </form> --}}
         {{-- メニュー --}}
-        <ul class="navigation">
+        <ul class="header-navigation">
             <li>
                 <a href="{{ route('members.index') }}">会員一覧</a>
             </li>

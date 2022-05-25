@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('style')
+<link rel="stylesheet" href="/css/data-container-style.css">
+@endsection
+
 @section('title')
 資料詳細
 @endsection
@@ -11,6 +15,6 @@
   <form action="{{ route('books.destroy', $book->id) }}" method="post">
     @csrf
     @method('delete')
-    <input type="submit" value="この資料を廃棄する">
+    <input class="booksShow-deleteBtn" type="submit" value="この資料を廃棄する&#xf1f8;">
   </form>
 @endsection
