@@ -1,15 +1,26 @@
 @extends('layouts.app')
 
+@section("style")
+<link rel="stylesheet" href="/css/index-common-style.css">
+@endsection
+
 @section('content')
 <h1>貸出一覧</h1>
 
-<!--検索ボタン-->
-<a href="{{ route('rentals.search') }}">検索</a><!--資料検索画面へ遷移-->
 
 <!--一覧表示-->
-    <table class="table"><!--テーブルのクラス名確認-->
+<div class="table-container">
+    <div class="index-searchContainer">
+        <!--検索ボタン-->
+        <a class="clickable index-searchBtn" href="{{ route('rentals.search') }}">
+            検索
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </a><!--資料検索画面へ遷移-->
+    </div>
+    
+    <table class="table table-striped"><!--テーブルのクラス名確認-->
         <thead>
-            <tr>
+            <tr class="orange-bg">
                 <th>資料ID</th>
                 <th>タイトル</th>
                 <th>利用会員ID</th>
@@ -33,6 +44,7 @@
             @endforeach
         </tbody>
     </table>
+</div>
 
 <!--ページ切り替え-->
     {{ $rentals->links() }}

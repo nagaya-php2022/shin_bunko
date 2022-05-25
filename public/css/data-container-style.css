@@ -1,0 +1,66 @@
+.bookData-container {
+    /* width: 90%; */
+    margin: auto;
+    background: white;
+    border-radius: 1em;
+    padding: 2em;
+}
+
+.bookData-container dt {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.bookData-container dd {
+    margin-left: 1em;
+    min-height: 1.2em;
+}
+
+.memberData-container {
+    /* width: 90%; */
+    margin: auto;
+    background: white;
+    border-radius: 1em;
+    padding: 2em;
+}
+
+.memberData-container dt {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.memberData-container dd {
+    margin-left: 1em;
+    min-height: 1.2em;
+}
+
+.staffData-container {
+    /* width: 90%; */
+    margin: auto;
+    background: white;
+    border-radius: 1em;
+    padding: 2em;
+}
+
+.staffData-container dt {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.staffData-container dd {
+    margin-left: 1em;
+    min-height: 1.2em;
+}
+
+.booksShow-deleteBtn,
+.membersShow-deleteBtn,
+.booksShow-deleteBtn {
+    display: block;
+    background: red;
+    padding: .5em;
+    width: 15em;
+    margin: 1em auto;
+    color: white;
+    border: none;
+    border-radius: .5em;
+}

@@ -2,11 +2,17 @@ body {
     background: #F0F0F0;
 }
 
+input[type=submit]{
+  font-family: FontAwesome;
+}
+
 h1 {
     font-size: 2rem;
     width: 10em;
     padding: .5em;
     margin: auto;
+    margin-top: 1em;
+    margin-bottom: 1em;
     border-radius: 100vh;
     background-color: #F9781A;
     color: white;
@@ -23,6 +29,14 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+.orange-bg {
+  background: #FF9244;
+}
+
+.navy-bg {
+  background: #023c4c;
+}
+
 .orange-input {
     border: solid 2px #FF9244;
     border-radius: .3em;
@@ -30,4 +44,15 @@ input[type=number] {
 
 .orange-btn {
     background: #F9781A;
+    color: white;
+}
+
+.table-container {
+  background: white;
+  padding: 2em;
+  border-radius: 1em;
+}
+
+.clickable:hover {
+  filter: brightness(.9);
 }

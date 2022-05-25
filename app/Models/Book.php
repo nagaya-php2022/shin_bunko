@@ -9,6 +9,8 @@ class Book extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['isbn','stocked_at','memo'];
+
     public function rentals()
     {
         return $this->hasMany(Rental::class);

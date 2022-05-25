@@ -1,0 +1,18 @@
+.rentalShow-DateInfo {
+    /* display: inline-block; */
+    width: 20em;
+    /* margin: auto; */
+    background: white;
+    border-radius: 1em;
+    padding: 2em;
+}
+
+.rentalShow h2 {
+    font-size: 1.6rem;
+    background: #F9781A;
+    width: 10em;
+    margin: 1em auto .5em;
+    text-align: center;
+    color: white;
+    padding: .3em;
+}

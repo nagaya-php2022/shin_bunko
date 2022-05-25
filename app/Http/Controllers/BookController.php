@@ -39,7 +39,7 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        $books = $request->user()->books()->create($request->all());
+        $books = Book::create($request->all());
         return redirect(route('books.index'));
     }
 
@@ -107,8 +107,8 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        $books->update($request->all());
-        return redirect(route('books.show',$books));
+        $book->update($request->all());
+        return redirect(route('books.show',$book));
     }
 
     /**
