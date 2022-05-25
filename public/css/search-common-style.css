@@ -1,5 +1,5 @@
 .search-searchBtn {
-    margin-bottom: 0.25em;
+    margin-bottom: 0.25rem;
     background: #F9781A;
     color: white;
     display: inline-block;
@@ -14,6 +14,7 @@
     user-select: none;
     border: 1px solid transparent;
     padding: 0.125rem 0.75rem;
-    font-size: 1rem;
+    line-height:inherit;
+    font-size: inherit;
     border-radius: 0.25rem;
 }

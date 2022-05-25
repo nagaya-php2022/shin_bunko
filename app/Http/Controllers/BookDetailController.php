@@ -14,7 +14,8 @@ class BookDetailController extends Controller
      */
     public function index()
     {
-        //
+        $book_details = BookDetail::orderby('isbn')->paginate(20);
+        return view('book_details.index', ['book_details' => $book_details]);
     }
 
     /**

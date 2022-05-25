@@ -23,6 +23,9 @@
         {{-- メニュー --}}
         <ul class="header-navigation">
             <li>
+                <a href="/">ホーム</a>
+            </li>
+            <li>
                 <a href="{{ route('members.index') }}">会員一覧</a>
             </li>
             <li>
