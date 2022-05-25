@@ -49,9 +49,9 @@ class BookController extends Controller
      * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function show(Book $books)
+    public function show(Book $book)
     {
-        return view('books.show', ['book' => $books]);
+        return view('books.show', ['book' => $book]);
     }
     
     public function rentableBookData($id) {

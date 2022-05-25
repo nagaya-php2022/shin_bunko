@@ -90,7 +90,8 @@ class MemberController extends Controller
      */
     public function update(Request $request, Member $member)
     {
-        //
+        $member->update($request->all());
+        return redirect(route('members.show',$member));
     }
 
     /**

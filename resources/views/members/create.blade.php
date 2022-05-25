@@ -4,7 +4,6 @@
 会員登録
 @endsection
 @section('content')
-@include('members.data')
 <h1>会員登録</h1>
 <form method="POST" action="{{route('members.store')}}">
   @csrf
