@@ -4,14 +4,14 @@
 会員登録
 @endsection
 @section('content')
-@include('members.data')
 <h1>会員登録</h1>
-<form method="POST" action="{{route('members.create')}}">
+<form method="POST" action="{{route('members.store')}}">
+  @csrf
   <label>氏名</br>
     <input type="text" name="name" value="">
   </label></br>
   <label>住所</br>
-    <input type="text" name="adress" value="">
+    <input type="text" name="address" value="">
   </label></br>
   <label>電話番号</br>
     <input type="tel" name="tel" value="">

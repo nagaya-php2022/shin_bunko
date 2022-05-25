@@ -14,10 +14,10 @@
     <input type="text" name="name" value="{{$member->name}}">
   </label></br>
   <label>住所</br>
-    <input type="text" name="adress" value="{{$member->adress}}">
+    <input type="text" name="address" value="{{$member->address}}">
   </label></br>
   <label>電話番号</br>
-    <input type="tel" name="tel" value="{{$member->adress}}">
+    <input type="tel" name="tel" value="{{$member->tel}}">
   </label></br>
   <label>メールアドレス</br>
     <input type="email" name="email" value="{{$member->email}}">

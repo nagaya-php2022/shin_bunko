@@ -36,8 +36,8 @@ class BookDetailController extends Controller
      */
     public function store(Request $request)
     {
-        $bookDetail = $request->user()->book_details()->create($request->all());
-        return redirect(route('index'));
+        $bookDetail =BookDetail::create($request->all());
+        return redirect(route('books.index'));
     }
 
     /**
