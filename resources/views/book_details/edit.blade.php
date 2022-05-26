@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('title')
-isbn編集
+ISBN編集
 @endsection
 @section('content')
 
-<h1>isbn編集</h1>
+<h1>ISBN編集</h1>
+@include('commons.flash')
 <form method="POST" action="{{route('book_details.update',$book_detail->isbn) }}">
     @csrf
     @method('patch')
@@ -28,6 +29,6 @@ isbn編集
         <input type="date" name="published_at" value="{{$book_detail->published_at}}">
     </label></br>
 
- <input type="submit" value="保存">
+<input type="submit" value="保存">
 </form>
 @endsection

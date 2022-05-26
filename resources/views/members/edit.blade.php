@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('title')
-資料編集
+会員編集
 @endsection
 @section('content')
 
 <h1>会員編集</h1>
+@include('commons.flash')
 <form method="POST" action="{{route('members.update',$member->id) }}">
     @csrf
     @method('patch')
