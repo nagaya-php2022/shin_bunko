@@ -56,7 +56,7 @@
 .membersShow-deleteBtn,
 .booksShow-deleteBtn {
     display: block;
-    background: red;
+    background: #de0000;
     padding: .5em;
     width: 15em;
     margin: 1em auto;

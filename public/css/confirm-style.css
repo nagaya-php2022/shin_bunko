@@ -1,0 +1,86 @@
+#confirm-mask {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: -100px;
+    background: #0000004d;
+}
+
+.confirm-hidden {
+    display: none;
+}
+
+.confirm-container {
+    position: absolute;
+    top: 2em;
+    left: 0;
+    right: 0;
+    font-size: 1.5em;
+    width: 20em;
+    margin: auto;
+    max-width: 80%;
+    border-radius: 1em;
+    background: white;
+    padding: 1em;
+}
+
+.confirm-container p {
+    margin: 2em 0;
+}
+
+.confirm-closeBtn {
+    position: absolute;
+    top: .5em;
+    right: .5em;
+    width: 1em;
+    height: 1em;
+    background: transparent;
+    border-radius: 10%;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+.confirm-closeBtn:hover {
+    background: #0000004d;
+}
+
+.confirm-closeBtn::before,
+.confirm-closeBtn::after {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    content: "";
+    display: block;
+    width: 10%;
+    height: 80%;
+    background: black;
+    border-radius: 100vh;
+    transform: rotate(-45deg);
+}
+.confirm-closeBtn::after {
+    transform: rotate(45deg);
+}
+
+.confirm-buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.confirm-calcelBtn {
+    border: 1px solid #023c4c;
+    border-radius: 0.5em;
+    padding: .3em;
+    color: #023c4c;
+    background: white;
+    font-size: 1em;
+}
+
+.confirm-deleteBtn {
+    padding: 0.3em;
+    width: 6em;
+    background: #de0000;
+    color: white;
+    border: none;
+    border-radius: .5em;
+}

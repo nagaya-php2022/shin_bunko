@@ -3,6 +3,7 @@
 @section('style')
 <link rel="stylesheet" href="/css/data-container-style.css">
 <link rel="stylesheet" href="/css/show-common-style.css">
+<link rel="stylesheet" href="/css/confirm-style.css">
 @endsection
 
 @section('title')
@@ -13,9 +14,15 @@
 
 <h1>資料詳細</h1>
 @include('books.data', ["showEditBtn" => true]) 
-  <form action="{{ route('books.destroy', $book->id) }}" method="post">
+  <form id="deleteForm" action="{{ route('books.destroy', $book->id) }}" method="post">
     @csrf
     @method('delete')
-    <input class="booksShow-deleteBtn" type="submit" value="この資料を廃棄する&#xf1f8;">
+    <button type="button" onclick="confirmDeletion()" class="booksShow-deleteBtn">
+      この資料を廃棄する
+      <i class="fas fa-trash"></i>
+    </button>
+    
   </form>
+  
+  @include('commons.confirm', ["formId" => "deleteForm"])
 @endsection
