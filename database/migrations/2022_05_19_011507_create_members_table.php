@@ -17,10 +17,9 @@ class CreateMembersTable extends Migration
             $table->id();
             $table->string('name', 150); //50文字150バイト
             $table->string('address', 600); //200文字
-            $table->bigInteger('tel');
+            $table->string('tel');
             $table->string('email', 50)->nullable();
             $table->date('birthday');
-            $table->date('deleted_at')->nullable();
             $table->timestamps();
         });
     }

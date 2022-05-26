@@ -13,4 +13,9 @@
 
 <h1>会員詳細</h1>
 @include('members.data', ["showEditBtn" => true]) 
+<form action="{{ route('members.destroy', $member->id) }}" method="post">
+    @csrf
+    @method('delete')
+    <input class="membersShow-deleteBtn" type="submit" value="この会員を削除する&#xf1f8;">
+</form>
 @endsection

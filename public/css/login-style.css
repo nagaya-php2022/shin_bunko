@@ -1,0 +1,36 @@
+.login-container {
+    background: white;
+    padding: 2em;
+    border-radius: 1em;
+    width: 40em;
+    margin: auto;
+}
+
+.login-container form {
+    /* font-size: 1.5em; */
+}
+
+.login-container form label {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+}
+
+.login-buttons {
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.5em;
+}
+
+.login-container form .login-registerLink {
+    border: 1px solid #023c4c;
+    border-radius: 0.5em;
+    padding: .5em;
+    color: #023c4c;
+    background: white;
+    font-size: 1em;
+}
+
+.login-container form input[type="submit"] {
+    padding: .5em;
+    width: 6em;
+}

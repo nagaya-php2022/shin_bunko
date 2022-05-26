@@ -133,8 +133,8 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        $books->delete();
-        return redirect(route('books.show'));
+        $book->delete();
+        return redirect(route('books.index'));
     }
 
     public function search(Request $request)
