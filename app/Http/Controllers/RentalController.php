@@ -51,7 +51,7 @@ class RentalController extends Controller
             $book->save();
         }
         
-        return redirect()->route("rentals.create");
+        return redirect()->route("rentals.create", ["show_notice" => true]);
     }
 
     /**

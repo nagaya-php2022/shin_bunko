@@ -3,6 +3,7 @@
 @section("style")
 <link rel="stylesheet" href="/css/common-style.css">
 <link rel="stylesheet" href="/css/rental-style.css">
+<link rel="stylesheet" href="/css/toast-style.css">
 @endsection
 
 @section("content")
@@ -10,12 +11,6 @@
 
 <form action="{{ route('rentals.store') }}" method="post">
     @csrf
-    {{-- <div class="rental-rental_staffIdCard">
-        <label>
-            職員ID
-            <input type="number" name="staffId" class="orange-input">
-        </label>
-    </div> --}}
     
     <div class="rental-rental_memberIdCard">
         <label>
@@ -44,6 +39,8 @@
 </form>
 
 @endsection
+
+@include("commons.toast")
 
 @section('script')
 <script src="/js/libraries/axios.min.js"></script>
@@ -95,10 +92,12 @@
         }
         e.preventDefault();
         
+        const memberId = document.querySelector('#memberId').value;
         const bookId = document.querySelector('#bookId').value;
         
         if(bookId !== "") {
             axios.get(`/book-data/${bookId}`)
+            // axios.get(`/book-data/${memberId}/${bookId}`)
             .then(res => {
                 // console.log(res);
                 console.log(res.data);
