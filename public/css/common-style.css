@@ -54,6 +54,8 @@ input[type=number] {
 .orange-btn {
     background: #F9781A;
     color: white;
+    border: none;
+    border-radius: .5em;
 }
 
 .table-container {
