@@ -4,6 +4,9 @@
 <link rel="stylesheet" href="/css/home-style.css">
 @endsection
 
+@section('title')
+ホーム
+@endsection
 @section('content')
 <h1>ホーム</h1>
 <div class="home-linkContainer">

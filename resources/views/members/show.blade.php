@@ -3,6 +3,7 @@
 @section('style')
 <link rel="stylesheet" href="/css/data-container-style.css">
 <link rel="stylesheet" href="/css/show-common-style.css">
+<link rel="stylesheet" href="/css/confirm-style.css">
 @endsection
 
 @section('title')
@@ -13,9 +14,15 @@
 
 <h1>会員詳細</h1>
 @include('members.data', ["showEditBtn" => true]) 
-<form action="{{ route('members.destroy', $member->id) }}" method="post">
+<form id="deleteForm" action="{{ route('members.destroy', $member->id) }}" method="post">
     @csrf
     @method('delete')
-    <input class="membersShow-deleteBtn" type="submit" value="この会員を削除する&#xf1f8;">
-</form>
+    <button type="button" onclick="confirmDeletion()" class="membersShow-deleteBtn">
+      この会員を削除する
+      <i class="fas fa-trash"></i>
+    </button>
+    
+  </form>
+  
+  @include('commons.confirm', ["formId" => "deleteForm"])
 @endsection

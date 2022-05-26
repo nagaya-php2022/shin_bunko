@@ -43,12 +43,11 @@ class RentalController extends Controller
         $bookIds = $request->bookIds;
         
         foreach ($bookIds as $bookId) {
-            $book = new Rental;
-            $book->book_id = $bookId;
-            // $book->staff_id = \Auth::user()->id;
-            $book->staff_id = 1;
-            $book->member_id = $request->memberId;
-            $book->save();
+            $rental = new Rental;
+            $rental->book_id = $bookId;
+            $rental->staff_id = \Auth::user()->id;
+            $rental->member_id = $request->memberId;
+            $rental->save();
         }
         
         return redirect()->route("rentals.create", ["show_notice" => true]);

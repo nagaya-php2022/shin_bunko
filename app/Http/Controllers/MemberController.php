@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Member;
 use Illuminate\Http\Request;
+use App\Rules\TelRule;
 
 class MemberController extends Controller
 {
@@ -55,6 +56,15 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required | max:75',
+            'address' => 'required | max:300',
+            'tel' => 'required | max:20',
+            'email' => 'max:50',
+            'birthday' => 'date',
+            'deleted_at' => 'date',
+            'tel' => new TelRule($request->tel),
+        ]);
         $member = Member::create($request->all());
         return redirect(route('members.index'));
     }

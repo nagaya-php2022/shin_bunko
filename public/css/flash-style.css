@@ -1,0 +1,8 @@
+.alart {
+    list-style-position:inside;
+    padding:12px;
+    font-weight:850;
+    color:#990000;
+    background:#FFEBE8;
+    border:2px solid #990000;
+}

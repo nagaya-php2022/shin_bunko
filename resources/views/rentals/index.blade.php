@@ -4,6 +4,10 @@
 <link rel="stylesheet" href="/css/index-common-style.css">
 @endsection
 
+@section('title')
+貸出一覧
+@endsection
+
 @section('content')
 <h1>貸出一覧</h1>
 

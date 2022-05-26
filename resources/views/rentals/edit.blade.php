@@ -5,6 +5,10 @@
 <link rel="stylesheet" href="/css/rental-style.css">
 @endsection
 
+@section('title')
+返却
+@endsection
+
 @section("content")
 <h1>返却</h1>
 
