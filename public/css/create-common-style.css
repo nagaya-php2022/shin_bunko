@@ -1,0 +1,39 @@
+.create-description {
+    font-size:1.5rem;
+    color:#707070;
+}
+
+.create-required-caption {
+    background-color:#f9781a;
+    border-radius:0.25rem;
+    color:white;
+    margin:0.25rem;
+    padding:0.25rem;
+    padding-top:0rem;
+    padding-bottom:0;
+}
+
+.create-container {
+    background: white;
+    padding: 2em;
+    border-radius: 1em;
+    /*width: 40em;*/
+    margin: auto;
+}
+
+.create-container form label {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+}
+
+.create-buttons {
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.5em;
+} 
+
+.create-container form input[type="submit"] {
+    padding: .5em;
+    width: 6em;
+    font-size: 1.5em;
+}
