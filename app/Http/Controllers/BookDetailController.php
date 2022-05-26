@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\BookDetail;
 use Illuminate\Http\Request;
+use App\Rules\IsbnIntegerRule;
+use App\Rules\GroupForeignRule;
 
 class BookDetailController extends Controller
 {
@@ -37,6 +39,16 @@ class BookDetailController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'isbn' => 'required | max:13',
+            'name' => 'required | max:300',
+            'group_code' => 'required | max:1',
+            'author' => 'required | max:300',
+            'publisher' => 'required | max:300',
+            'published_at' => 'required | date',
+            'isbn' => new IsbnIntegerRule($request->isbn),
+            'group_code' => new GroupForeignRule($request->group_code),
+        ]);
         $bookDetail =BookDetail::create($request->all());
         return redirect(route('books.index'));
     }
@@ -72,6 +84,16 @@ class BookDetailController extends Controller
      */
     public function update(Request $request, BookDetail $bookDetail)
     {
+        $this->validate($request, [
+            'isbn' => 'required | max:13',
+            'name' => 'required | max:300',
+            'group_code' => 'required | max:1',
+            'author' => 'required | max:300',
+            'publisher' => 'required | max:300',
+            'published_at' => 'required | date',
+            'isbn' => new IsbnIntegerRule($request->isbn),
+            'group_code' => new GroupForeignRule($request->group_code),
+        ]);
         $bookDetail->update($request->all());
         return redirect(route('book_details.show',$bookDetail));
     }

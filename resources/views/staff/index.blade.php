@@ -4,6 +4,9 @@
 <link rel="stylesheet" href="/css/index-common-style.css">
 @endsection
 
+@section('title')
+職員一覧
+@endsection
 @section('content')
 <h1>職員一覧</h1>
 

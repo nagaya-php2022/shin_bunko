@@ -5,6 +5,10 @@
 <link rel="stylesheet" href="/css/search-common-style.css">
 @endsection
 
+@section('title')
+職員検索
+@endsection
+
 @section('content')
 <h1>職員検索</h1>
 

@@ -5,6 +5,10 @@
 <link rel="stylesheet" href="/css/rental-style.css">
 @endsection
 
+@section('title')
+貸出
+@endsection
+
 @section("content")
 <h1>貸出</h1>
 

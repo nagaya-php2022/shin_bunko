@@ -6,6 +6,7 @@
 @section('content')
 
 <h1>資料編集</h1>
+@include('commons.flash')
 <form method="POST" action="{{route('books.update',$book->id) }}">
     @csrf
     @method('patch')

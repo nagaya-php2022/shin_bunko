@@ -6,6 +6,8 @@ use App\Models\Book;
 use App\Models\BookDetail;
 use App\Models\Rental;
 use Illuminate\Http\Request;
+use App\Rules\BookForeignRule;
+use App\Rules\IntegerRule;
 
 class BookController extends Controller
 {
@@ -39,6 +41,12 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'isbn' => 'required | max:13',
+            'stocked_at' => 'required | date',
+            'wasted_at' => 'date',
+            'isbn' => new BookForeignRule($request->isbn),
+        ]);
         $books = Book::create($request->all());
         return redirect(route('books.index'));
     }
@@ -107,6 +115,12 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
+        $this->validate($request, [
+            'isbn' => 'required | max:13',
+            'stocked_at' => 'required | date',
+            'wasted_at' => 'date',
+            'isbn' => new BookForeignRule($request->isbn),
+        ]);
         $book->update($request->all());
         return redirect(route('books.show',$book));
     }

@@ -32,6 +32,9 @@
                 <a href="{{ route('books.index') }}">資料一覧</a>
             </li>
             <li>
+                <a href="{{ route('book_details.index') }}">ISBN一覧</a>
+            </li>
+            <li>
                 <a href="{{ route('rentals.index') }}">貸出一覧</a>
             </li>
             <li>
