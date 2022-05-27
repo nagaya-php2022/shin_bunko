@@ -1,0 +1,10 @@
+.toast {
+    position: fixed;
+    bottom: 1em;
+    left: 1em;
+    width: 20em;
+    border: orange 3px solid;
+    background: #ffd78c;
+    padding: 1em;
+    z-index: 100;
+}

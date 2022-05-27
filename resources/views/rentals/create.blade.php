@@ -3,6 +3,7 @@
 @section("style")
 <link rel="stylesheet" href="/css/common-style.css">
 <link rel="stylesheet" href="/css/rental-style.css">
+<link rel="stylesheet" href="/css/toast-style.css">
 @endsection
 
 @section('title')
@@ -49,6 +50,8 @@
 </form>
 
 @endsection
+
+@include("commons.toast")
 
 @section('script')
 <script src="/js/libraries/axios.min.js"></script>
@@ -100,10 +103,12 @@
         }
         e.preventDefault();
         
+        const memberId = document.querySelector('#memberId').value;
         const bookId = document.querySelector('#bookId').value;
         
         if(bookId !== "") {
             axios.get(`/book-data/${bookId}`)
+            // axios.get(`/book-data/${memberId}/${bookId}`)
             .then(res => {
                 // console.log(res);
                 console.log(res.data);
