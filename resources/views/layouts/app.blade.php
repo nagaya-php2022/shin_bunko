@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/css/common-style.css">
     <link rel="stylesheet" href="/css/header-style.css">
     <link rel="stylesheet" href="/css/footer-style.css">
+    <link rel="icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
     {{-- <script src="https://kit.fontawesome.com/7bb72ffa50.js" crossorigin="anonymous"></script> --}}
     @yield('style')
