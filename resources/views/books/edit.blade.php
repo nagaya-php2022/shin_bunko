@@ -24,9 +24,6 @@
         <p><label>入荷年月日<span class="create-required-caption">必須</span><br>
             <input type="date" name="stocked_at" value="{{$book->stocked_at}}" class="orange-input">
         </label></p>
-        <p><label>廃棄年月日<br>
-            <input type="date" name="wasted_at" value="{{$book->wasted_at}}" class="orange-input">
-        </label></p>
         <p><label>備考<br>
             <input type="text" name="memo" value="{{$book->memo}}" class="orange-input">
         </label></p>

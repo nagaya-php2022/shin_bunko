@@ -28,6 +28,7 @@
                 <th>タイトル</th>
                 <th>著者</th>
                 <th>出版社</th>
+                <th>状態</th>
             </tr>
         </thead>
         <tbody>
@@ -37,6 +38,7 @@
                     <td><a href="{{ route('books.show', $book->id) }}">{{ $book->book_detail->name }}</a></td>
                     <td>{{ $book->book_detail->author }}</td>
                     <td>{{ $book->book_detail->publisher }}</td>
+                    <td>{{ $book->wasted_at==null ? "" : "廃棄済" }}</td>
                 </tr>
             @endforeach
         </tbody>
