@@ -133,7 +133,7 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        $book->delete();
+        $book->update(['wasted_at'=>date("Y-m-d")]);
         return redirect(route('books.index'));
     }
 
