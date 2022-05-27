@@ -13,10 +13,24 @@ class MemberController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $members = Member::orderby('created_at', 'desc')->paginate(20);
-        return view('members.index', ['members' => $members]);
+        $column = "created_at";
+        $direction = "desc";
+
+        if ($request->sort_by == "created_at_desc")
+        {
+            $column = "created_at";
+            $direction = "desc";
+        } else if ($request->sort_by == "created_at_asc")
+        {
+            $column = "created_at";
+            $direction = "asc";
+        }
+
+        $members = Member::orderby($column, $direction)->paginate(20);
+        $conditions = ['sort_by' => $request->sort_by];
+        return view('members.index', ['members' => $members, 'conditions' => $conditions]);
     }
     
     public function memberInfo($id) {
@@ -118,7 +132,7 @@ class MemberController extends Controller
 
     public function search(Request $request)
     {
-        $query = Member::select('id', 'name', 'tel');
+        $query = Member::select('id', 'name', 'tel','created_at');
         if ($request->member_id) {
             $query->where('id', '=', $request->member_id);
         }

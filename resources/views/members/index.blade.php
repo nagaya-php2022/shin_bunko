@@ -26,11 +26,16 @@
 <!--一覧表示-->
 <div class="table-container">
     <div class="index-searchContainer">
-        <!--検索ボタン-->
-        <a class="clickable index-searchBtn" href="{{ route('members.search') }}">
-            検索
-            <i class="fas fa-search"></i>
-        </a><!--会員検索画面へ遷移-->
+        <form action="{{ route('members.index') }}" method="get"><!--データの送信先の入力-->
+            <select name="sort_by" onchange="this.form.submit()" class="orange-input">
+                <option value="created_at_desc" {{ $conditions['sort_by']== "created_at_desc" ? 'selected' : ''  }}>登録日 新しい順</option>
+                <option value="created_at_asc" {{ $conditions['sort_by']== "created_at_asc" ? 'selected' : ''  }}>登録日 古い順</option>
+            </select>
+            <a class="clickable index-searchBtn" href="{{ route('members.search') }}">
+                検索
+                <i class="fas fa-search"></i>
+            </a><!--会員検索画面へ遷移-->
+       </form>
     </div>
 
     <table class="table table-striped"><!--テーブルのクラス名確認-->
@@ -39,6 +44,7 @@
                 <th>会員ID</th>
                 <th>氏名</th>
                 <th>電話番号</th>
+                <th>登録年月日</th>
             </tr>
         </thead>
         <tbody>
@@ -47,6 +53,7 @@
                     <td>{{ $member->id }}</td>
                     <td><a href="{{ route('members.show', $member->id) }}">{{ $member->name }}</a></td>
                     <td>{{ $member->tel }}</td>
+                    <td>{{ $member->created_at }}</td>
                 </tr>
             @endforeach
         </tbody>

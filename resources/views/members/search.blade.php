@@ -28,6 +28,7 @@
                 <th>会員ID</th>
                 <th>氏名</th>
                 <th>電話番号</th>
+                <th>登録年月日</th>
             </tr>
         </thead>
         <tbody>
@@ -36,6 +37,7 @@
                     <td>{{ $member->id }}</td>
                     <td><a href="{{ route('members.show', $member->id) }}">{{ $member->name }}</a></td>
                     <td>{{ $member->tel }}</td>
+                    <td>{{ $member->created_at }}</td>
                 </tr>
             @endforeach
         </tbody>

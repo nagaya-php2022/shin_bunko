@@ -41,15 +41,26 @@ class RentalController extends Controller
     public function store(Request $request)
     {
         $bookIds = $request->bookIds;
-        
-        foreach ($bookIds as $bookId) {
-            $book = new Rental;
-            $book->book_id = $bookId;
-            // $book->staff_id = \Auth::user()->id;
-            $book->staff_id = 1;
-            $book->member_id = $request->memberId;
-            $book->save();
+
+        $rentalquantity = Rental::where([["member_id", "=", $request->memberId], ["returned_at", "=", null]] )->count();
+
+        $requestquantity = count($bookIds);
+
+        if ($rentalquantity + $requestquantity > 5){
+            $rentalErrors = ["一度に貸出できるのは5冊までです"];
+            return view('rentals.create', ['rentalErrors' => $rentalErrors]); 
+        }else{
+            foreach ($bookIds as $bookId) {
+                $book = new Rental;
+                $book->book_id = $bookId;
+                // $book->staff_id = \Auth::user()->id;
+                $book->staff_id = 1;
+                $book->member_id = $request->memberId;
+                $book->save();
+            }
         }
+        
+        
         
         return redirect()->route("rentals.create");
     }

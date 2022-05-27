@@ -14,6 +14,7 @@
 
 <form action="{{ route('rentals.store') }}" method="post">
     @csrf
+    @include('commons.rental-flash')
     {{-- <div class="rental-rental_staffIdCard">
         <label>
             職員ID
