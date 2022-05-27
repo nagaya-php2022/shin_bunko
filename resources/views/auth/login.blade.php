@@ -16,7 +16,7 @@
     @include('commons.flash')
     <label>
       ID</br>
-      <input type="text" name="name" value="{{old('id')}}">
+      <input type="text" name="id" value="{{old('id')}}">
     </label></br>
     <label>
       パスワード</br>
