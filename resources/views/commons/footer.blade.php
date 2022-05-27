@@ -1,5 +1,5 @@
 <footer><footer>
-<style type = "text/css">
+<!-- <style type = "text/css"> 
     footer{
         position: absolute;
         bottom: 0;
@@ -9,4 +9,4 @@
         background-color: #023c4c;
         /* margin-top:5em; */
     }
-</style>
+</style> -->
