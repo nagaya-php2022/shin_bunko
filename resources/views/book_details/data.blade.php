@@ -22,5 +22,7 @@
 	<dt>出版社</dt>
 	<dd>{{ $book_detail->publisher }}</dd>
 	<dt>出版日</dt>
-	<dd>{{ $book_detail->published_at }}</dd>  
+	<dd>{{ $book_detail->published_at }}</dd> 
+	<dt>新刊</dt>
+	<dd>{{ $book_detail->is_new_book ? "新刊" : ""}}</dd> 
 </dl>

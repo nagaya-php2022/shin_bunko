@@ -37,7 +37,7 @@
                     <td>{{ $member->id }}</td>
                     <td><a href="{{ route('members.show', $member->id) }}">{{ $member->name }}</a></td>
                     <td>{{ $member->tel }}</td>
-                    <td>{{ $member->created_at }}</td>
+                    <td>{{ $member->created_at->toDateString() }}</td>
                 </tr>
             @endforeach
         </tbody>
