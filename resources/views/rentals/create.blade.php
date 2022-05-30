@@ -50,7 +50,7 @@
 </form>
 
 @if(isset($noticeMsg))
-@include("commons.toast")
+    @include("commons.toast")
 @endif
 
 @endsection
