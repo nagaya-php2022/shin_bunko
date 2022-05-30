@@ -1,6 +1,6 @@
 .toast {
     position: fixed;
-    bottom: 1em;
+    bottom: -2em;
     left: 1em;
     width: 20em;
     border: green 3px solid;
@@ -8,4 +8,9 @@
     padding: 1em;
     z-index: 100;
     color: green;
+    transition: bottom .3s, opacity .3s;
+}
+
+.toast.showing {
+    bottom: 1em;
 }
