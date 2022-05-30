@@ -21,6 +21,7 @@ class MemberSeeder extends Seeder
                 'tel' => '09024102983',
                 'email' => 'keiko93711@ssnfk.cw',
                 'birthday' => date('1972-11-06'),
+                'created_at' => date('2022-04-01'),
             ],
             [
                 'name' =>'稲葉祐介',
@@ -28,6 +29,7 @@ class MemberSeeder extends Seeder
                 'tel' => '08039398175',
                 'email' => 'yuusuke2394@xqwzoxbgg.xi',
                 'birthday' => date('1999-05-10'),
+                'created_at' => date('2022-04-02'),
             ],
             [
                 'name' => '北島菜摘',
@@ -35,6 +37,7 @@ class MemberSeeder extends Seeder
                 'tel' => '09010233658',
                 'email' => 'natsumi9521@vzvurevuz.qc',
                 'birthday' => date('1994-06-10'),
+                'created_at' => date('2022-04-03'),
             ],
         ]);
     }

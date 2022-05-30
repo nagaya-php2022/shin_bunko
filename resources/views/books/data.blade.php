@@ -11,6 +11,8 @@
 	
 	<dt>資料ID</dt>
 	<dd>{{ $book->id }}</dd>
+	<dt>資料名</dt>
+	<dd>{{ $book->book_detail->name }}</dd>
 	<dt>ISBN番号</dt>
 	<dd>{{ $book->isbn }}</dd>
 	<dt>分類コード</dt>

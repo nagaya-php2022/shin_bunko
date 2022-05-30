@@ -10,6 +10,8 @@
 
     <dt>会員ID</dt>
     <dd>{{ $member->id ?: "-" }}</dd>
+    <dt>会員名</dt>
+    <dd>{{ $member->name ?: "-" }}</dd>
     <dt>電話番号</dt>
     <dd>{{ $member->tel ?: "-" }}</dd>
     <dt>メールアドレス</dt>
