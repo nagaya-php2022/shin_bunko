@@ -32,6 +32,10 @@
 
 @endsection
 
+@if(isset($noticeMsg))
+@include("commons.toast")
+@endif
+
 @section('script')
 <script src="/js/libraries/axios.min.js"></script>
 <script>

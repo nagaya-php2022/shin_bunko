@@ -62,7 +62,7 @@ class RentalController extends Controller
         
         
         
-        return redirect()->route("rentals.create");
+        return view("rentals.create", ["noticeMsg" => "貸出完了"]);
     }
 
     /**
@@ -148,7 +148,8 @@ class RentalController extends Controller
             }
         }
         
-        return redirect("rentals/edit");
+        // return redirect("rentals/edit");
+        return view("rentals.edit", ["noticeMsg" => "返却完了"]);
     }
     
     /**
