@@ -21,7 +21,6 @@
             <i class="fas fa-search"></i>
         </a><!--資料検索画面へ遷移-->
     </div>
-    
     <table class="table table-striped"><!--テーブルのクラス名確認-->
         <thead>
             <tr class="navy-bg">
@@ -30,6 +29,8 @@
                 <th>利用会員ID</th>
                 <th>貸出日</th>
                 <th>返却日</th>
+                <th>返却予定日</th>
+                <th>延滞</th>
             </tr>
         </thead>
         <tbody>
@@ -44,6 +45,8 @@
                     <td>{{ $rental->member_id }}</td>
                     <td>{{ $rental->created_at->toDateString() }}</td>
                     <td>{{ $rental->returned_at }}</td>
+                    <td>{{ $rental->due_date }}</td>
+                    <td>{{ $rental->is_delay ? "延滞中":"" }}</td>
                 </tr>
             @endforeach
         </tbody>
