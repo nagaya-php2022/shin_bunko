@@ -19,5 +19,5 @@
     <dt>生年月日</dt>
     <dd>{{ $member->birthday ?: "-" }}</dd>
     <dt>登録年月日</dt>
-    <dd>{{ $member->created_at ?: "-" }}</dd>
+    <dd>{{ $member->created_at->toDateString() ?: "-" }}</dd>
 </dl>
