@@ -3,8 +3,9 @@
     bottom: 1em;
     left: 1em;
     width: 20em;
-    border: orange 3px solid;
-    background: #ffd78c;
+    border: green 3px solid;
+    background: #D1F4DA;
     padding: 1em;
     z-index: 100;
+    color: green;
 }

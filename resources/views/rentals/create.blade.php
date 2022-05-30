@@ -49,11 +49,12 @@
     </div>
 </form>
 
-@endsection
-
 @if(isset($noticeMsg))
 @include("commons.toast")
 @endif
+
+@endsection
+
 
 @section('script')
 <script src="/js/libraries/axios.min.js"></script>

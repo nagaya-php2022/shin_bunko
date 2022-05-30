@@ -3,6 +3,7 @@
 @section("style")
 <link rel="stylesheet" href="/css/common-style.css">
 <link rel="stylesheet" href="/css/rental-style.css">
+<link rel="stylesheet" href="/css/toast-style.css">
 @endsection
 
 @section('title')
@@ -30,11 +31,12 @@
     </div>
 </form>
 
-@endsection
-
 @if(isset($noticeMsg))
 @include("commons.toast")
 @endif
+
+@endsection
+
 
 @section('script')
 <script src="/js/libraries/axios.min.js"></script>
