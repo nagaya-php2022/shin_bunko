@@ -25,4 +25,14 @@ class BookDetail extends Model
     {
         return $this->belongsTo(Group::class);
     }
+
+    protected function getIsNewBookAttribute()
+    {
+        $published_time = strtotime($this->published_at);
+
+        $today = strtotime(date("Y-m-d"));
+
+        return (($today - $published_time) / 86400) <= 90;
+    }
+
 }
