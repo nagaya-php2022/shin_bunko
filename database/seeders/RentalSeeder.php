@@ -40,6 +40,14 @@ class RentalSeeder extends Seeder
                 'updated_at'=>new DateTime(),
                 'created_at'=>new DateTime(),
             ],
+            [
+                'book_id'=>10,
+                'member_id'=>3,
+                'staff_id'=>3,
+                'returned_at'=>null,
+                'updated_at'=>new DateTime(),
+                'created_at'=>date('2022-03-01'),
+            ],
         ]);
     }
 }
