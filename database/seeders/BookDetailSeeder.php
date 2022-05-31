@@ -37,7 +37,7 @@ class BookDetailSeeder extends Seeder
                'group_code'=>8,
                'author'=>'吉川美夫',
                'publisher'=>'文建書房',
-               'published_at'=>date('1966-01-01'),
+               'published_at'=>date('2022-05-01'),
            ],
            [
                'isbn'=>4101361029,
