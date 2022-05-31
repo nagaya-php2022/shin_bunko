@@ -23,12 +23,12 @@ header {
     top: .1em;
     right: .5em;
 }
-.header-logoutForm input[type="submit"] {
+.header-logoutForm button[type="submit"] {
     background: transparent;
     color: white;
     border: none;
 }
-.header-logoutForm input[type="submit"]:hover {
+.header-logoutForm button[type="submit"]:hover {
     background: #0000003b;
 }
 

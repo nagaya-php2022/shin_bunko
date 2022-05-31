@@ -16,7 +16,9 @@
                         (ID:{{ \Auth::id() }})
                     </span>
                 </span>
-                <input type="submit" value="ログアウト &#xf08b;">
+                <button type="submit">
+                    ログアウト
+                    <img style="height:1em" src="/img/arrow-right-from-bracket-solid.svg" alt="">
             </div>
         </form>
         @endif
