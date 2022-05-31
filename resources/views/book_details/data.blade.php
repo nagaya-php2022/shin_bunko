@@ -25,7 +25,7 @@
 	</div>
 	
 	<div class="bookdetail-data">
-		<div class="boodetailkData-cell">
+		<div class="bookdetailData-cell">
 			<dt>分類名</dt>
 			<dd>{{ $book_detail->group->name }}</dd>
 		</div>
